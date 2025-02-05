@@ -1,0 +1,19 @@
+.contactBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icons {
+    margin-right: 8px;
+}
+
+.text {
+    margin-bottom: 10px;
+}
+
+.btnDelete {
+    height: 30px;
+    width: 80px;
+    cursor: pointer;
+}

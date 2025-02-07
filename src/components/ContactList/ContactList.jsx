@@ -3,7 +3,7 @@ import clsx from "clsx";
 import s from "../ContactList/ContactList.module.css";
 import { useSelector } from "react-redux";
 
-import { selectFilteredContacts } from "../../redux/contactsSlice";
+import { selectFilteredContacts } from "../../redux/contacts/contactsSlice";
 
 export default function ContactList() {
   const contacts = useSelector(selectFilteredContacts);

@@ -3,7 +3,7 @@ import s from "../ContactForm/ContactForm.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsOps";
+import { addContact } from "../../redux/contacts/contactsOperation";
 
 export default function ContactForm() {
   const re = /^\d{3}-\d{3}-\d{4}$/;

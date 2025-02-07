@@ -1,0 +1,42 @@
+.wrapperRegister {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+
+}
+
+.registerForm {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 4px 8px 8px rgba(34, 60, 80, 0.2);
+    gap: 20px;
+    max-width: 300px;
+
+    padding: 20px;
+    border-radius: 8px;
+    background: white;
+}
+
+.inputRegister {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid black;
+    outline: none;
+    font-size: 20px;
+
+    &:hover {
+        border-color: #007BFF;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+}
+
+.labelRegister:hover {
+    color: #007BFF;
+
+}
+
+.titleRegister {
+    text-align: center;
+}

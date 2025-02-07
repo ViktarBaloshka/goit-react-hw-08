@@ -1,30 +1,29 @@
+import { Routes, Route } from "react-router-dom";
 import "../App/App.module.css";
-
-import ContactForm from "../ContactForm/ContactForm";
-import SearchBox from "../SearchBox/SearchBox";
-import ContactList from "../ContactList/ContactList";
-import { useDispatch, useSelector } from "react-redux";
+import HomePage from "../../pages/HomePages/HomePage";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
+import ContactsPage from "../../pages/ContactsPage/ContactsPage";
+import Layout from "../Layout/Layout";
+import RegisterPage from "../../pages/RegistrationPage/RegistrationPage";
+import LoginPage from "../../pages/LoginPage/LoginPage";
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { fetchContacts } from "../../redux/contactsOps";
-import { selectIsError, selectIsLoading } from "../../redux/selectors";
+import { refreshUserThunk } from "../../redux/auth/authOperations";
 
 export default function App() {
-  const isLoading = useSelector(selectIsLoading);
-  const isError = useSelector(selectIsError);
-
   const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUserThunk());
   }, [dispatch]);
   return (
-    <div>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      {isError && <h2>Something went wrong!</h2>}
-      {isLoading && <h2>Loading...</h2>}
-      <ContactList />
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="phonebook" element={<ContactsPage />} />
+      </Route>
+      <Route path="register" element={<RegisterPage />} />
+      <Route path="login" element={<LoginPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   );
 }

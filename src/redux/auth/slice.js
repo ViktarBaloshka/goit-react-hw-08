@@ -4,7 +4,7 @@ import {
   logoutThunk,
   refreshUserThunk,
   registrationThunk,
-} from "./authOperations";
+} from "./operations";
 
 const initialState = {
   user: {
@@ -34,11 +34,19 @@ const slice = createSlice({
       .addCase(logoutThunk.fulfilled, (state, action) => {
         return initialState;
       })
+      .addCase(refreshUserThunk.pending, (state, action) => {
+        state.isRefreshing = true;
+      })
       .addCase(refreshUserThunk.fulfilled, (state, action) => {
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
         state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(refreshUserThunk.rejected, (state, action) => {
+        state.isRefreshing = false;
       });
   },
 });
 export const authReducer = slice.reducer;
+export const selectIsRefreshing = (state) => state.auth.isRefreshing;

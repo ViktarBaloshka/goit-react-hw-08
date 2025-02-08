@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import { goitApi } from "../auth/authOperations";
+import { goitApi } from "../auth/operations";
 
 export const fetchContacts = createAsyncThunk(
   "contacts/fetchAll",
@@ -9,7 +8,7 @@ export const fetchContacts = createAsyncThunk(
       const { data } = await goitApi.get("/contacts");
       return data;
     } catch (error) {
-      return thunkAPI.fulfillWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -21,7 +20,7 @@ export const addContact = createAsyncThunk(
       const { data } = await goitApi.post("/contacts", body);
       return data;
     } catch (error) {
-      return thunkAPI.fulfillWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -33,7 +32,7 @@ export const deleteContact = createAsyncThunk(
       const { data } = await goitApi.delete(`/contacts/${id}`);
       return data;
     } catch (error) {
-      return thunkAPI.fulfillWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

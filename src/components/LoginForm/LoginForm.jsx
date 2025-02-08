@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import s from "./LoginForm.module.css";
 import clsx from "clsx";
 import { useDispatch } from "react-redux";
-import { loginThunk } from "../../redux/auth/authOperations";
+import { loginThunk } from "../../redux/auth/operations";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {

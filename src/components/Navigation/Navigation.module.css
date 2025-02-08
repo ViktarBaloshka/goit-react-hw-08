@@ -1,0 +1,26 @@
+.headerNav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.headerNav a:first-child {
+  margin-right: auto;
+}
+
+.headerNav a {
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease-in-out;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.headerNav a:hover,
+.headerNav a.active {
+  color: #61dafb;
+}

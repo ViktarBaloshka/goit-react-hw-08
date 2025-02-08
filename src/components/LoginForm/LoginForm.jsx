@@ -17,7 +17,7 @@ export default function LoginForm() {
     navigate("/");
     dispatch(loginThunk(values))
       .unwrap()
-      .then(() => {});
+      .then(() => navigate("/"));
     options.resetForm();
   };
   return (

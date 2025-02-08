@@ -5,6 +5,7 @@ import SearchBox from "../../components/SearchBox/SearchBox";
 import { useEffect } from "react";
 import { fetchContacts } from "../../redux/contacts/operation";
 import { selectIsError, selectIsLoading } from "../../redux/contacts/selectors";
+import Loader from "../../components/Loader/Loader";
 
 export default function ContactsPage() {
   const dispatch = useDispatch();
@@ -18,8 +19,8 @@ export default function ContactsPage() {
       <ContactForm />
       <SearchBox />
       <ContactList />
+      {isLoading && <Loader />}
       {isError && <h2>Something went wrong!</h2>}
-      {isLoading && <h2>Loading...</h2>}
     </div>
   );
 }

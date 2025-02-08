@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const goitApi = axios.create({
   baseURL: "https://connections-api.goit.global",
@@ -17,6 +18,13 @@ export const registrationThunk = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch (error) {
+      if (error.response.data.code === 11000) {
+        toast.error("User already exist!", {
+          duration: 2000,
+          position: "top-right",
+        });
+        return thunkAPI.rejectWithValue(error.message);
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }

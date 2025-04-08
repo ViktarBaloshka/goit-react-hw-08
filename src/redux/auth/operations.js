@@ -3,7 +3,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 export const goitApi = axios.create({
-  baseURL: "https://connections-api.goit.global",
+  //baseURL: "https://connections-api.goit.global",
+  baseURL: "https://nodejs-hw-mongodb-b910.onrender.com",
 });
 
 const setAuthHeader = (token) => {
@@ -14,7 +15,7 @@ export const registrationThunk = createAsyncThunk(
   "auth/register",
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await goitApi.post("/users/signup", credentials);
+      const { data } = await goitApi.post("/auth/register", credentials);
       setAuthHeader(data.token);
       return data;
     } catch (error) {

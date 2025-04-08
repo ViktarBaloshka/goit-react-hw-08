@@ -9,7 +9,7 @@ export default function UserMenu() {
   const user = useSelector(selectUser);
   return (
     <div className={clsx(s.userMenu)}>
-      <h2 className={clsx(s.headerText)}>Welcome, {user.name}</h2>
+      <h2 className={clsx(s.headerText)}>Welcome, {/* ś */}</h2>
       <button
         onClick={() => dispatch(logoutThunk())}
         className={clsx(s.btnLogout)}

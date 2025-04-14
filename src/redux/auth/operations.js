@@ -4,7 +4,8 @@ import toast from "react-hot-toast";
 
 export const goitApi = axios.create({
   //baseURL: "https://connections-api.goit.global",
-  baseURL: "https://nodejs-hw-mongodb-b910.onrender.com",
+  //baseURL: "https://nodejs-hw-mongodb-b910.onrender.com",
+  baseURL: "http://localhost:3100",
 });
 
 const setAuthHeader = (token) => {
@@ -34,7 +35,7 @@ export const loginThunk = createAsyncThunk(
   "auth/login",
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await goitApi.post("/users/login", credentials);
+      const { data } = await goitApi.post("/auth/login", credentials);
       setAuthHeader(data.token);
       return data;
     } catch (error) {
@@ -46,7 +47,7 @@ export const logoutThunk = createAsyncThunk(
   "auth/logout",
   async (_, thunkAPI) => {
     try {
-      const { data } = await goitApi.post("/users/logout");
+      const { data } = await goitApi.post("/auth/logout");
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -63,7 +64,7 @@ export const refreshUserThunk = createAsyncThunk(
     }
     setAuthHeader(savedToken);
     try {
-      const { data } = await goitApi.get("/users/current");
+      const { data } = await goitApi.get("/auth/refresh");
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

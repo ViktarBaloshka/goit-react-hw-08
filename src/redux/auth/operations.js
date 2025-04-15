@@ -4,8 +4,8 @@ import toast from "react-hot-toast";
 
 export const goitApi = axios.create({
   //baseURL: "https://connections-api.goit.global",
-  //baseURL: "https://nodejs-hw-mongodb-b910.onrender.com",
-  baseURL: "http://localhost:3100",
+  baseURL: "https://nodejs-hw-mongodb-b910.onrender.com",
+  //baseURL: "http://localhost:3100",
 });
 
 const setAuthHeader = (token) => {
